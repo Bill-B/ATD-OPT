@@ -1,0 +1,79 @@
+<metrics>
+	wingarea
+	wingspan
+	chord
+	htailarea
+	htailarm
+	vtailarea
+	vtailarm
+	AEROP location of AC moves trim location of elevator, pitch rates 
+	EYEPOINT
+	VRP
+	
+ <mass_balance>
+	ixx - roll
+	iyy - pitch
+	izz - yaw
+	ixy
+	ixz
+	iyz
+	CG location
+	
+<ground_reactions>
+	gear type
+	location
+	static friction
+	dynamic friction
+	rolling friction
+	spring coeff
+	damping coeff
+	brakes
+	retractable
+	add fcs/steer-cmd-norm??
+	
+<propulsion>
+	engine file
+	location
+	thruster file
+	location
+	p_factor
+	
+<flight_control>
+	pitch trim summer -had to make equal....
+	elevator control limits -had to make equal....
+	roll trim summer
+	right aileron limits
+	left aileron limits
+	rudder command summer
+	rudder position limits
+	
+<aerodynamics>
+	<drag>
+		CD0 Drag at zero lift (qbar*Sw*table)
+		CDi Ind Drag (qbar*Sw*CL^2*value)
+		CDbeta Drag due to sideslip (qbar*Sw*table)
+		CDde Drag due to elevator deflection (qbar*Sw*normalized elevator*value) change to deflection angle
+	<side>
+		CYb	Side force due to beta (qbar*Sw*beta*value) <!-- general av. -0.56 STOL -0.362-->
+	<lift>
+		CLalpha Lift due to alpha (qbar*Sw*table)
+		CLde Lift due to elevator (qbar*Sw*elevator rad*value) <!-- general aviation 0.355 -->
+		lift due to pitch rate??
+		
+	<roll>
+		Clb Roll due to beta (qbar*Sw*bw*beta*value) <!-- general av. -0.074 STOL -0.125 --> 
+		Clp Roll due to roll rate (qbar*Sw*bw*bi2vel*p_rad/sec*value)  <!-- was -0.17 general av. -0.41 STOL -0.53-->
+		Clr Roll due to yaw rate (qbar*Sw*bw*bi2vel*r_rad/sec*value) <!-- general av. 0.107 STOL 0.41 -->
+		Clda Roll due to aileron (qbar*Sw*bw*left ail rad* table) <!-- was 0.13 general av. 0.134 STOL 0.2--> possible add ailerons??
+		Cldr Roll due to rudder (qbar*Sw*bw*rudder rad * value)  <!-- general av. 0.107 STOL -0.024-->
+	<pitch>
+		Cmalpha Pitch due to alpha (qbar*Sw*cw*alpha*value)  <!-- General Aviation -0.683 STOL -0.78 -->
+		Cmde Pitch due to elevator (qbar*Sw*cw*elevator rad*table) <!-- was -0.6  General av. -0.923 STOL -2.12--> table with throttle??
+		Cmq Pitch due to pitch rate (qbar*Sw*cw*ci2vel*q_rad/sec*value) <!-- was -12,-8 general av. -9.96 STOL -35.6 Increased hstab angle of attack reduces pitching moment of tail -->
+		Cmadot Pitch due to alpha rate (qbar*Sw*cw*ci2vel*alphadot*vlaue)  <!-- general av. -4.36 STOL -6.05 the time lag associated with wing downwash affecting the horizontal tail.-->
+	<yaw>
+		Cnb Yaw due to beta (qbar*Sw*bw*beta*value) <!-- general av. 0.071 STOL 0.101-->
+		Cnr Yaw due to yaw rate (qbar*Sw*bw*bi2vel*r_rad/sec*value) <!-- general av.-0.125 STOL -0.18-->
+		Cndr Yaw due to rudder (qbar*Sw*be*rudder rad *value) <!-- general av.-0.072 -->
+		Cnda adverse yaw (qbar*Sw*bw*left ail rad*value)  <!-- general av.-0.0035 STOL 0.1-->
+		Cndi Yaw due to tail incidence (qbar*Sw*bw*value) 
