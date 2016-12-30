@@ -37,10 +37,10 @@ mod.Cmadot = vari(6);
 
 %% modify aircraft file
 
-%modify rascal.xml
+%modify rascal parameter structure
 theStruct = modifyAC(theStruct,mod);
 
-%print rascal.xml back to xml
+%print back to rascal.xml
 makeXML(theStruct,strcat(jsbsimlocation,'\aircraft\Rascal\rascal.xml'));
 % copyfile('rascal.xml','C:\cygwin\home\Bill\jsbsim\aircraft\Rascal') ;
 % delete('rascal.xml');
