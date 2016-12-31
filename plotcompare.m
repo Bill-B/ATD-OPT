@@ -116,8 +116,8 @@ box on
 
  s2 = subplot(3,1,2);
  hold on
- ylabel('Yaw Angle Psi (deg)')
- plot(FMT.ATT.TimeS,FMT.ATT.Yaw)
+ ylabel('Yaw Angle Psi (deg)');
+ plot(FMT.ATT.TimeS,FMT.ATT.Yaw);
  plot(SIM.data(:,1),SIM.data(:,106));
  grid on
  box on
@@ -133,14 +133,45 @@ xlim([SIM.data(1,1),SIM.data(end,1)]);
 grid on
 box on
 
-% fig4=figure(4);
-% clf(4)
-% hold on
-% plot(FMT.GPS.TimeS,-FMT.GPS.VZ)
-% plot(SIM.data(:,1),-SIM.data(:,35)./3.28084);
-% xlim([SIM.data(1,1),SIM.data(end,1)]);
-% grid on
-% box on
+fig4=figure(4);
+clf(4)
+
+fig4.Name = 'Velocity Data';
+s1=subplot(4,1,1);
+hold on
+ylabel('ROC m/s')
+plot(FMT.GPS.TimeS,-FMT.GPS.VZ)
+plot(SIM.data(:,1),-SIM.data(:,35)./3.28084);
+grid on
+box on
+
+s2 = subplot(4,1,2);
+hold on
+ylabel('U Body (m/s)')
+plot(FMT.NKF1.TimeS,FMT.NKF1.U);
+plot(SIM.data(:,1),SIM.data(:,24)./3.28084);
+grid on
+box on
+
+s3 = subplot(4,1,3);
+hold on
+ylabel('V Body (m/s)');
+plot(FMT.NKF1.TimeS,FMT.NKF1.V);
+plot(SIM.data(:,1),SIM.data(:,25)./3.28084);
+grid on
+box on
+
+s4 = subplot(4,1,4);
+hold on
+ylabel('W Body (m/s)');
+plot(FMT.NKF1.TimeS,FMT.NKF1.W);
+plot(SIM.data(:,1),SIM.data(:,26)./3.28084);
+grid on
+box on
+
+linkaxes([s1,s2,s3,s4],'x');
+xlim([SIM.data(1,1),SIM.data(end,1)]);
+
 
 % fig5=figure(5);
 % clf(5)
