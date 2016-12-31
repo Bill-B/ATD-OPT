@@ -5,14 +5,15 @@
 %TODO
 %Init PQR? Init Pdot Qdot Rdot? Init UVW? Udot Vdot Wdot?
 %init VN VE VD?
+%wind Z?
 %init density/temp?
 %script offset rc from trim pos
-
+%jsbsim fix
 function error= ATD(vari)
 global flight jsbsimlocation INFO FMT theStruct %I know...
 cdir = pwd;
 if nargin==0 %     if run without inputs, the ATD is running outside an optimizer.    
-    vari = [24.4399755874371,-0.00202516216439148,-0.723171641204347,-2.06698030461429,-38.5824200922958,-3.69802056118875];
+    vari = [20.8636705766660,-0.0822812361983976,-0.542610486762185,-1.85529851757995,-36.8676754358511,-3.00005454052653];
     setup(); %run setup if this is run standalone
     tic %start timing after loading 
 end
