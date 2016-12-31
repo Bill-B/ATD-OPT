@@ -65,7 +65,7 @@ SIM=importdata('gustavoutput.csv',',',1);
 cd(cdir);
 
 %% plot
-plotcompare( FMT,flight,SIM );
+% plotcompare( FMT,flight,SIM );
 
 %% errors
 error=errors(FMT,flight,SIM);
