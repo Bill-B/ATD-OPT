@@ -7,8 +7,7 @@
 %init VN VE VD?
 %init density/temp?
 %script offset rc from trim pos
-%send multiple flights into jsbsim, run multiple trims in a row.
-%   add/subtract time
+
 function error= ATD(vari)
 global flight jsbsimlocation INFO FMT theStruct %I know...
 cdir = pwd;
@@ -52,8 +51,8 @@ makeXML(theStruct,strcat(jsbsimlocation,'\aircraft\Rascal\rascal.xml'));
 cd(jsbsimlocation);
 delete('gustavoutput.csv');
 
-[data1,data2]=system('JSBSim.exe --script=./scripts/gustav1.xml ') %slow
-
+% [data1,data2]=system('JSBSim.exe --script=./scripts/gustav1.xml & ') %slow
+dos('start /W /MIN JSBSim.exe --script=./scripts/gustav1.xml'); %faster
 % !TASKKILL /F /IM JSBSim.exe /T
 
 %% open jsbsim output
@@ -61,11 +60,10 @@ SIM=importdata('gustavoutput.csv',',',1);
 cd(cdir);
 
 %% plot
-plotcompare( FMT,flight,SIM );
+% plotcompare( FMT,flight,SIM );
 
 %% errors
 error=errors(FMT,flight,SIM);
-
 
 if nargin==0 %if the ATD is run standalone, display time
     toc
