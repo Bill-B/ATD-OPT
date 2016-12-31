@@ -7,7 +7,8 @@
 %init VN VE VD?
 %init density/temp?
 %script offset rc from trim pos
-
+%send multiple flights into jsbsim, run multiple trims in a row.
+%   add/subtract time
 function error= ATD(vari)
 global flight jsbsimlocation INFO FMT theStruct %I know...
 cdir = pwd;
