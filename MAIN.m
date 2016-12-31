@@ -7,11 +7,11 @@ setup();
 
 %% setup and run optimization
 lb = [...
-      19.9 -0.1 -0.8 -4 -40 -7
+      19.9 0.0 2.0 -0.6 -0.1 -0.8 -4.0 -40.0 -7.0
     ];
 
 ub = [...
-      25 0 -0.3 -0.5 -8 -3
+      25.0 0.5 6.0 -0.6 0.0 -0.3 -0.5 -8.0 -3.0
     ];
 
 
@@ -22,7 +22,7 @@ b = [];
 Aeq = [];
 beq = [];
 
-nvars = 6;
+nvars = 9;
 TolCon_Data = 1e-6; 
 TolFun_Data = 1e-08;
 lastrun = load('run1.mat');

@@ -13,23 +13,27 @@ function error= ATD(vari)
 global flight jsbsimlocation INFO FMT theStruct %I know...
 cdir = pwd;
 if nargin==0 %     if run without inputs, the ATD is running outside an optimizer.    
-    vari = [20.8636705766660,-0.0822812361983976,-0.542610486762185,-1.85529851757995,-36.8676754358511,-3.00005454052653];
+    vari = [21.6620279712671,0.32,4.6028,0.3,-0.0946685988055871,-0.310113997503891,-0.718592684747903,-18.8692934326798,-3.14943689122259];
     setup(); %run setup if this is run standalone
     tic %start timing after loading 
 end
 
 % Flight data is a global variable set in the MAIN.m
+
 mod.AERORPX = vari(1);
+mod.CLo = vari(2);
+mod.CLa = vari(3);
+mod.CLde = vari(4);
 % mod.Clb = vari(2);
 % mod.Clp = vari(3);
 % mod.Clr = vari(4);
 % mod.Clda = vari(5);
 % mod.Cldr = vari(6);
-mod.Cmo = vari(2);
-mod.Cmalpha = vari(3);
-mod.Cmde = vari(4);
-mod.Cmq = vari(5);
-mod.Cmadot = vari(6);
+mod.Cmo = vari(5);
+mod.Cmalpha = vari(6);
+mod.Cmde = vari(7);
+mod.Cmq = vari(8);
+mod.Cmadot = vari(9);
 % mod.Cnb = vari(12);
 % mod.Cnr = vari(13);
 % mod.Cndr = vari(14);
@@ -52,7 +56,7 @@ makeXML(theStruct,strcat(jsbsimlocation,'\aircraft\Rascal\rascal.xml'));
 cd(jsbsimlocation);
 delete('gustavoutput.csv');
 
-% [data1,data2]=system('JSBSim.exe --script=./scripts/gustav1.xml & ') %slow
+% [data1,data2]=system('JSBSim.exe --script=./scripts/gustav1.xml  ') %slow
 dos('start /W /MIN JSBSim.exe --script=./scripts/gustav1.xml'); %faster
 % !TASKKILL /F /IM JSBSim.exe /T
 
@@ -61,7 +65,7 @@ SIM=importdata('gustavoutput.csv',',',1);
 cd(cdir);
 
 %% plot
-% plotcompare( FMT,flight,SIM );
+plotcompare( FMT,flight,SIM );
 
 %% errors
 error=errors(FMT,flight,SIM);
