@@ -7,7 +7,7 @@ theStruct.Children(7).Children(16).Children(2).Children.Data = ...
 %% LIFT
 % CLalpha
 %generate table
-alpharad = [-0.2618, 0, 0.244]
+alpharad = [-0.2618, 0, 0.244];
 CL = mod.CLo +( mod.CLa .* alpharad );
 
 alpharad(4:5) = [0.25 1]; %stall model for now
