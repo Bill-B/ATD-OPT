@@ -14,7 +14,7 @@ loadlocation = 'C:\Users\Bill\Documents\ryEng\MASc\alton\GustAV';
 jsbsimlocation = 'C:\cygwin\home\Bill\jsbsim';
 
 %specify timeS of flight to analyze [start end]
-flight = [1055 1058];
+flight = [1059.25 1063];
 
 %% LOAD FILES
 cd(loadlocation);
@@ -30,6 +30,10 @@ INFO.timezone = -4;
 
 % pixhawk output
 [INFO, FMT] = fcnFMTLOAD(INFO,pixhawkpath,pixhawkfiles(flightnumber));
+
+%add U V W to NKF1
+FMT = modifydata(FMT);
+
 evalc('[INFO]=fcnGETINFO( INFO, FMT )');
 cd(cdir)
 
